@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Nov 11 20:49:18 2024
-Oppgave 1 arbeidskrav 2
+Oppgave 1 arbeidskrav 1
 @author: Trond G
 """
 
