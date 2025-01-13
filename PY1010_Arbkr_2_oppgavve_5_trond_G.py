@@ -11,7 +11,7 @@ halvsirkel, se figuren under. Med «ytre» omkrets menes samlet lengde av de sor
 Funksjonen skal returnere arealet og «ytre» omkrets, som så skrives til skjerm med passende
 tekst.
 """
-
+#%% Henter programpakker til prorgammet
 import numpy as np
 from numpy import radians,sin,cos,pi,linspace
 import matplotlib.pyplot as plt
@@ -20,16 +20,17 @@ import math
 
 side_a = float()
 side_b = float()
-Arealhelsirkel = float()
-Omkrsirkel = float()
+Areal_helsirkel = float()
+Omkr_sirkel = float()
 
-#%% Henter nn side a og side b
+#%% Henter inn side a og side b
 
-side_a = float(input("Skriv inn lengden på side a:", ))
-side_b = float(input("Skriv in lengden på side b:", ))
+side_a = float(input("Skriv inn lengden på side A:", ))
+side_b = float(input("Skriv in lengden på side B:", ))
 
-#%% Finner lengden på hypotinusen til trekanten
-Hypotinus = math.sqrt((side_a)**2+(side_b)**2)
+#%% Finner lengden på hypotenusen til trekanten med Pytagoras setning a*2 +b*2 = c*2
+Hypotenus = math.sqrt((side_a)**2+(side_b)**2)
+
 
 
 
@@ -39,19 +40,16 @@ Omkr_sirkel = 2*pi*(side_a/2)
 
 Areal_helsirkel = (side_a**2)*pi
 
-Areal_trekant = side_a*side_b/2
+Areal_trekant = (side_a*side_b)/2
+# %% Vi trenger bare en halv sirkelbue og bruker derfor 180 grader
+v_rad = 180*np.pi/180
 
+Vinkel =  side_a / side_b
 
-
-
-#beregner samme som v_grad men nå som liste -(forsøk på ekte brøk)
+Vinkel_b_H = math.degrees(math.atan(Vinkel))
 
 
 plt.close('all')
-
-v_rad = 180*np.pi/180
-
-Vinkel = math.tan( side_a / side_b )
 
 
 arc_angles = linspace(0 * pi, v_rad, 180)
@@ -59,6 +57,12 @@ arc_xs =side_a/2 * cos(arc_angles)
 arc_ys =side_a/2 * sin(arc_angles)
 plt.plot(arc_xs, arc_ys, color = 'red', lw = 1)
 
+
+
+print("Samlet omkrets til trekant og halvsirkel er: ",round( Hypotenus + side_b +(Omkr_sirkel/2),3))
+print("Samlet areal på tekant og halvsirkel er: ",round( Areal_helsirkel/2 + Areal_trekant ,3))
+print("Vinkel melleom side B og hypotenus er:",round(Vinkel_b_H, 3),chr(176),sep='')
+print("Se plot for grafisk framstilling.")
 
 # tegner diameter blå horisontalt
 plt.plot( side_a/2, 0, marker= 'o', color = 'blue')
@@ -72,10 +76,14 @@ plt.plot([-side_a/2,-side_a/2],[0,-side_b], marker= 'o', color = 'yellow', lw = 
 
 #plotter line fra bunnpunkt og opp til høyre side av sirkelen
 plt.plot([side_a/2,-side_a/2],[0,-side_b], marker= 'o', color = 'green', lw = 1)
+
 # plotter inn tekst på hypotinusen
 
-plt.gca().annotate('Hypotinus', xy =(-0.3,-side_b/2), xycoords= 'data',rotation = Vinkel, fontsize = 8)
+plt.gca().annotate('Hypotenus', xy =(0.15,-side_b/2-0.15), xycoords= 'data',rotation = 0, fontsize = 7)
+plt.gca().annotate('katet A', xy =(0.15,0.15), xycoords= 'data',rotation = 0, fontsize = 7)
+plt.gca().annotate('katet B', xy =(-side_a/2+0.15,-side_b/2), xycoords= 'data',rotation = 0, fontsize = 7)
 
 
 plt.gca().set_aspect('equal')
 plt.show()
+
