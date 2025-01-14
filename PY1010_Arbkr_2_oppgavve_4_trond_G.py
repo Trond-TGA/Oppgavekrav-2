@@ -16,21 +16,21 @@ antall innbyggere for det «nye» landet. Programmet skal så utvide/oppdatere
 dictionaryen med den nye informasjonen. Dictionaryen data skrives så til skjerm
 
 """
-
+#%% Henter inn moduler
 import numpy as np
 import array
-
+#%% Lager variabler 
 soke_land = str()
 nytt_land = str()
 svar_leggetil = str()
 ny_by = str()
 ant_innbyggere = int()
 
+#%% Presenterer dataene i et dict
 #dictionary av data
 hovedstader =dict({ "Norge" : ["Oslo",0.634],"England" : ["London", 8.982],"Frankerike" : ["Paris", 2.169],"Italia" : ["Roma", 2.873]})
 
 soke_land= input ( str ( print ("Hvilket land ønsker du informasjon om?" , soke_land)))
-
 
 
 if soke_land in hovedstader:
