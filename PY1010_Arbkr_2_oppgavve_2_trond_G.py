@@ -15,7 +15,7 @@ Hint1: Gir programmet ditt et fornuftig svar hvis det f.eks er 21 elever i klass
 Hint2: Det er ikke vanlig å si/skrive: ‘Det må handles inn 6.0 pizzaer til festen’. Hvordan kan
 sikre at antall pizzaer skrives ut som et heltall (ikke desimaltall)?"""
 
-#%%
+#%% Henter inn moduler nødvendig for koden
 import numpy as np
 import math
 Antall_pizza = int
@@ -33,7 +33,7 @@ Antall_pizza = antall_elever*pizza_forbruk
 Antall_pizza_kjop = round(Antall_pizza, 2)
 Antall_pizza_hent = math.ceil(Antall_pizza)
 
-#%%
+#%% Forutsetter at det blir fest
 if antall_elever <= 0:
     print("Det blir ingen fest, men du kan jo kjøpe 1 pizza til deg selv.")
 else:
